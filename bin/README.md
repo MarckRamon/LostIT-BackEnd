@@ -1,7 +1,13 @@
 <div align="center">  
-  <h1>📦 LostIT 📦</h1>  
-  <h2>BACKEND</h2>
+  <h1>📦 LostIT - BackEnd 📦</h1>  
   <p>An Inventory Management System For Lost Items</p>
+</div>
+<hr>
+<div align="center">
+ <h1>🔗 Links 🔗</h2>
+  <a href="https://github.com/MarckRamon/LostIT-FrontEnd">
+    <img src="https://img.shields.io/badge/LostIT_FrontEnd_Repo-Link-blue?style=for-the-badge&logoColor=white" alt="LostIT - FrontEnd Repo">
+  </a>
 </div>
 <hr>
 <div align="center">  
