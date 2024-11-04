@@ -17,25 +17,21 @@ public class LocationController {
     @Autowired
     private LocationService locationService;
 
-    // Endpoint to create a new location
     @PostMapping("/createLocation")
     public LocationEntity createLocation(@RequestBody LocationEntity locationEntity) {
         return locationService.createLocation(locationEntity);
     }
 
-    // Endpoint to get all locations
     @GetMapping("/getAllLocations")
     public List<LocationEntity> getAllLocations() {
         return locationService.getAllLocations();
     }
 
-    // Endpoint to update location details
     @PutMapping("/updateLocationDetails/")
     public LocationEntity updateLocationDetails(@RequestParam int id, @RequestBody LocationEntity newLocationDetails) {
         return locationService.updateLocationDetails(id, newLocationDetails);
     }
 
-    // Endpoint to delete a location by ID
     @DeleteMapping("/deleteLocation/{id}")
     public String deleteLocation(@PathVariable int id) {
         return locationService.deleteLocation(id);
