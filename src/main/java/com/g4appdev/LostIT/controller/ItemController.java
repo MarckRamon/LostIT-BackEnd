@@ -17,25 +17,25 @@ public class ItemController {
     @Autowired
     private ItemService itemService;
 
-    // Endpoint to create a new item
+    
     @PostMapping("/addItem")
     public ItemEntity createItem(@RequestBody ItemEntity itemEntity) {
         return itemService.createItem(itemEntity);
     }
 
-    // Endpoint to get all items
+    
     @GetMapping("/getAllItems")
     public List<ItemEntity> getAllItems() {
         return itemService.getAllItems();
     }
 
-    // Endpoint to update item details
+    
     @PutMapping("/updateItem/{id}")
     public ItemEntity updateItemDetails(@PathVariable int id, @RequestBody ItemEntity newItemDetails) {
         return itemService.updateItemDetails(id, newItemDetails);
     }
 
-    // Endpoint to delete an item by ID
+   
     @DeleteMapping("/deleteItem/{id}")
     public String deleteItem(@PathVariable int id) {
         return itemService.deleteItem(id);
