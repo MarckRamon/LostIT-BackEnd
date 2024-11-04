@@ -30,8 +30,8 @@ public class ItemController {
     }
 
     // Endpoint to update item details
-    @PutMapping("/updateItemDetails/")
-    public ItemEntity updateItemDetails(@RequestParam int id, @RequestBody ItemEntity newItemDetails) {
+    @PutMapping("/updateItem/{id}")
+    public ItemEntity updateItemDetails(@PathVariable int id, @RequestBody ItemEntity newItemDetails) {
         return itemService.updateItemDetails(id, newItemDetails);
     }
 
