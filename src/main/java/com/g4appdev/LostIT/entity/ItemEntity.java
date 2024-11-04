@@ -28,18 +28,18 @@ public class ItemEntity {
     
     
     @ManyToOne
-    @JoinColumn(name = "AdminID") // This links the item to the admin
+    @JoinColumn(name = "AdminID") 
     @JsonBackReference
     private AdminEntity admin;
     
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "CategoryID") // This links the item to the category
+    @JoinColumn(name = "CategoryID") 
     private CategoryEntity category;
     
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "LocationID") // This links the item to the location
+    @JoinColumn(name = "LocationID") 
     private LocationEntity location;
  
     public ItemEntity() {}
