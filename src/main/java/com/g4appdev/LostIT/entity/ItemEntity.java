@@ -1,7 +1,9 @@
 package com.g4appdev.LostIT.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
+//import com.fasterxml.jackson.annotation.JsonBackReference;
+//import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 
@@ -27,29 +29,31 @@ public class ItemEntity {
     private String date;
     
     
-    @ManyToOne
-    @JoinColumn(name = "AdminID") 
-    @JsonBackReference
-    private AdminEntity admin;
+    //@ManyToOne
+    //@JoinColumn(name = "AdminID") 
+    //@JsonBackReference
+    //private AdminEntity admin;
     
-    @JsonIgnore
+    
     @ManyToOne
-    @JoinColumn(name = "CategoryID") 
+    @JoinColumn(name = "CategoryID")
+    @JsonBackReference
     private CategoryEntity category;
     
-    @JsonIgnore
+    
     @ManyToOne
     @JoinColumn(name = "LocationID") 
+    @JsonBackReference
     private LocationEntity location;
  
     public ItemEntity() {}
  
-    public ItemEntity(String itemName, String description, String status, String date, AdminEntity admin, CategoryEntity category, LocationEntity location) {
+    public ItemEntity(String itemName, String description, String status, String date, CategoryEntity category, LocationEntity location) {
         this.itemName = itemName;
         this.description = description;
         this.status = status;
         this.date = date;
-        this.admin = admin;
+        //this.admin = admin;
         this.category = category;
         this.location = location;
     }
@@ -90,13 +94,13 @@ public class ItemEntity {
 		this.date = date;
 	}
 
-	public AdminEntity getAdmin() {
-		return admin;
-	}
+	//public AdminEntity getAdmin() {
+	//	return admin;
+	//}
 
-	public void setAdmin(AdminEntity admin) {
-		this.admin = admin;
-	}
+	//public void setAdmin(AdminEntity admin) {
+	//	this.admin = admin;
+	//}
 
 	public CategoryEntity getCategory() {
 		return category;

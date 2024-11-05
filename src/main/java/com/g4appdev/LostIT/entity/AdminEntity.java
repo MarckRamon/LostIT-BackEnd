@@ -1,8 +1,8 @@
 package com.g4appdev.LostIT.entity;
 
-import java.util.List;
+//import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+//import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.*;
 
@@ -32,9 +32,9 @@ public class AdminEntity {
     private String phoneNumber;
  
    
-    @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @JsonManagedReference // This ensures that items will be properly serialized when fetching the admin
-    private List<ItemEntity> items;
+   // @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    //@JsonManagedReference // This ensures that items will be properly serialized when fetching the admin
+    //private List<ItemEntity> items;
  
     public AdminEntity() {}
  
@@ -90,13 +90,13 @@ public class AdminEntity {
 	}
  
  
-    public List<ItemEntity> getItems() {
-        return items;
-    }
+    //public List<ItemEntity> getItems() {
+    //    return items;
+    //}
  
-    public void setItems(List<ItemEntity> items) {
-        this.items = items;
-    }
+    //public void setItems(List<ItemEntity> items) {
+    //    this.items = items;
+    //}
 
 	
 }

@@ -2,6 +2,10 @@ package com.g4appdev.LostIT.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+//import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
  
 @Entity
@@ -16,7 +20,9 @@ public class CategoryEntity {
     @Column(name = "CategoryName", nullable = false)
     private String categoryName;
     
+    
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JsonManagedReference
     private List<ItemEntity> items;
  
     public CategoryEntity() {}
