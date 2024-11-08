@@ -1,6 +1,8 @@
 package com.g4appdev.LostIT.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+//import com.fasterxml.jackson.annotation.JsonBackReference;
 
 //import com.fasterxml.jackson.annotation.JsonBackReference;
 //import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -37,13 +39,15 @@ public class ItemEntity {
     
     @ManyToOne
     @JoinColumn(name = "CategoryID")
-    @JsonBackReference
+    //@JsonBackReference
+    @JsonIgnoreProperties("items")
     private CategoryEntity category;
     
     
     @ManyToOne
     @JoinColumn(name = "LocationID") 
-    @JsonBackReference
+    //@JsonBackReference
+    @JsonIgnoreProperties("items")
     private LocationEntity location;
  
     public ItemEntity() {}

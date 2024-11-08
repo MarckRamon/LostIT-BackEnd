@@ -2,7 +2,9 @@ package com.g4appdev.LostIT.entity;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+//import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 //import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -21,8 +23,9 @@ public class CategoryEntity {
     private String categoryName;
     
     
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @JsonManagedReference
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    //@JsonManagedReference
+    @JsonIgnoreProperties("category")
     private List<ItemEntity> items;
  
     public CategoryEntity() {}
