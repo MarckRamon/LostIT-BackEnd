@@ -29,7 +29,7 @@ public class ItemService {
         // Check if category needs to be created or already exists
         CategoryEntity category = itemEntity.getCategory();
         if (category != null && (category.getCategoryId() == 0 || !categoryRepo.existsById(category.getCategoryId()))) {
-            category = categoryRepo.save(category); // Create new category if not exists
+            category = categoryRepo.save(category); // mo create new category if wala
         } else if (category != null) {
             category = categoryRepo.findById(category.getCategoryId()).orElseThrow(() -> new NoSuchElementException("Category not found"));
         }
@@ -37,7 +37,7 @@ public class ItemService {
         // Check if location needs to be created or already exists
         LocationEntity location = itemEntity.getLocation();
         if (location != null && (location.getLocationId() == 0 || !locationRepo.existsById(location.getLocationId()))) {
-            location = locationRepo.save(location); // Create new location if not exists
+            location = locationRepo.save(location); // mo create new location if wala
         } else if (location != null) {
             location = locationRepo.findById(location.getLocationId()).orElseThrow(() -> new NoSuchElementException("Location not found"));
         }
