@@ -33,7 +33,8 @@ public class AdminService {
             adminEntity = adminRepo.findById(id).orElseThrow(() -> new NoSuchElementException("Admin not found"));
 
             adminEntity.setEmail(newAdminDetails.getEmail());
-            adminEntity.setFullName(newAdminDetails.getFullName());
+            adminEntity.setFirstName(newAdminDetails.getFirstName());
+            adminEntity.setLastName(newAdminDetails.getLastName());
             adminEntity.setPhoneNumber(newAdminDetails.getPhoneNumber());
             adminEntity.setPassword(newAdminDetails.getPassword());
 

@@ -33,8 +33,8 @@ public class AdminController {
         return adminService.getAllAdmins();
     }
 
-    @PutMapping("/updateAdminDetails/")
-    public AdminEntity updateAdminDetails(@RequestParam int id, @RequestBody AdminEntity newAdminDetails) {
+    @PutMapping("/updateAdminDetails/{id}")
+    public AdminEntity updateAdminDetails(@PathVariable int id, @RequestBody AdminEntity newAdminDetails) {
         return adminService.updateAdminDetails(id, newAdminDetails);
     }
 

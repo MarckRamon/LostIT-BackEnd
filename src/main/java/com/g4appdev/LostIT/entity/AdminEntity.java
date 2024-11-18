@@ -19,8 +19,11 @@ public class AdminEntity {
     @Column(name = "Email", nullable = false)
     private String email;
     
-    @Column(name = "FullName", nullable = false)
-    private String fullName;
+    @Column(name = "FirstName", nullable = false)
+    private String firstName;
+    
+    @Column(name = "LastName", nullable = false)
+    private String lastName;
     
     @Column(name = "Username", nullable = false)
     private String username;
@@ -38,10 +41,10 @@ public class AdminEntity {
  
     public AdminEntity() {}
  
-    public AdminEntity(String email, String fullName, String username, String password, String phoneNumber) {
+    public AdminEntity(String email, String firstName, String lastName, String username, String password, String phoneNumber) {
         this.email = email;
-        this.fullName = fullName;
-        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;       this.username = username;
         this.password = password;
         this.phoneNumber = phoneNumber;
     }
@@ -58,12 +61,20 @@ public class AdminEntity {
         return email;
     }
  
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
  
-    public String getFullName() {
-        return fullName;
+    public String getFirstName() {
+        return firstName;
+    }
+    
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+ 
+    public String getLastName() {
+        return lastName;
     }
     
 
