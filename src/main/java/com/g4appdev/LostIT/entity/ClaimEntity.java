@@ -2,6 +2,8 @@ package com.g4appdev.LostIT.entity;
 
 
 import jakarta.persistence.*;
+
+@Entity
 @Table(name="claim")
 public class ClaimEntity {
 	
