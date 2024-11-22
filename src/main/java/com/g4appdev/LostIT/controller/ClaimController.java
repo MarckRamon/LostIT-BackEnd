@@ -25,7 +25,7 @@ public class ClaimController {
 	private ClaimService claimService;
 	
 	// Create a new claim for an item
-    @PostMapping("/create/{itemId}")
+    @PostMapping("/createClaim/{itemId}")
     public ResponseEntity<?> createClaim(@PathVariable int itemId, @RequestBody ClaimEntity claim) {
         ClaimEntity newClaim = claimService.createClaim(itemId, claim);
         if (newClaim != null) {
@@ -35,13 +35,13 @@ public class ClaimController {
     }
 
     // Get all claims
-    @GetMapping("/getAll")
+    @GetMapping("/getAllClaims")
     public ResponseEntity<List<ClaimEntity>> getAllClaims() {
         return ResponseEntity.ok(claimService.getAllClaims());
     }
 
     // Get claim by ID
-    @GetMapping("/get/{id}")
+    @GetMapping("/getClaim/{id}")
     public ResponseEntity<?> getClaimById(@PathVariable int id) {
         Optional<ClaimEntity> claim = claimService.getClaimById(id);
         if (claim.isPresent()) {
@@ -51,7 +51,7 @@ public class ClaimController {
     }
 
     // Update claim
-    @PutMapping("/update/{id}")
+    @PutMapping("/updateClaim/{id}")
     public ResponseEntity<?> updateClaim(
             @PathVariable int id,
             @RequestBody ClaimEntity claimDetails) {
@@ -63,7 +63,7 @@ public class ClaimController {
     }
 
     // Delete claim
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/deleteClaim/{id}")
     public ResponseEntity<?> deleteClaim(@PathVariable int id) {
         boolean isDeleted = claimService.deleteClaim(id);
         if (isDeleted) {
