@@ -74,7 +74,7 @@ public class ClaimService {
             ItemEntity item = existingClaim.getItem();
             if (item != null) {
                 item.setClaim(null);
-                item.setStatus("FOUND");
+                item.setStatus("Unclaimed");
                 itemRepo.save(item);
             }
             claimRepo.deleteById(claimId);
