@@ -52,9 +52,7 @@ public class ClaimController {
 
     // Update claim
     @PutMapping("/updateClaim/{id}")
-    public ResponseEntity<?> updateClaim(
-            @PathVariable int id,
-            @RequestBody ClaimEntity claimDetails) {
+    public ResponseEntity<?> updateClaim(@PathVariable int id, @RequestBody ClaimEntity claimDetails) {
         ClaimEntity updatedClaim = claimService.updateClaim(id, claimDetails);
         if (updatedClaim != null) {
             return ResponseEntity.ok(updatedClaim);
@@ -62,7 +60,7 @@ public class ClaimController {
         return ResponseEntity.notFound().build();
     }
 
-    // Delete claim
+    
     @DeleteMapping("/deleteClaim/{id}")
     public ResponseEntity<?> deleteClaim(@PathVariable int id) {
         boolean isDeleted = claimService.deleteClaim(id);
