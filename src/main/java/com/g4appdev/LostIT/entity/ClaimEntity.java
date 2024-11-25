@@ -1,6 +1,8 @@
 package com.g4appdev.LostIT.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -25,6 +27,7 @@ public class ClaimEntity {
     private String dateClaimed;
  
     @OneToOne(mappedBy = "claim",  fetch = FetchType.LAZY)
+    @JsonManagedReference
     private ItemEntity item;
     
    // @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
@@ -40,15 +43,15 @@ public class ClaimEntity {
         this.dateClaimed = dateClaimed;
     }
  
-    public int getAdminId() {
+    public int getClaimId() {
         return claimId;
     }
     
-    public void setStudentEmail(String studEmail) {
+    public void setStudEmail(String studEmail) {
     	this.studEmail = studEmail;
     }
  
-    public String getStudentEmail() {
+    public String getStudEmail() {
         return studEmail;
     }
  

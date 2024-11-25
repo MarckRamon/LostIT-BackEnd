@@ -1,5 +1,6 @@
 package com.g4appdev.LostIT.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
@@ -32,8 +33,9 @@ public class ItemEntity {
     private String date;
     
     
-    @OneToOne()
+    @OneToOne(optional=true)
     @JoinColumn(name = "ClaimID")
+    @JsonBackReference
     private ClaimEntity claim;
    
     //@ManyToOne

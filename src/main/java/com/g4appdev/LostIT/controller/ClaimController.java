@@ -24,7 +24,7 @@ public class ClaimController {
 	@Autowired
 	private ClaimService claimService;
 	
-	// Create a new claim for an item
+	
     @PostMapping("/createClaim/{itemId}")
     public ResponseEntity<?> createClaim(@PathVariable int itemId, @RequestBody ClaimEntity claim) {
         ClaimEntity newClaim = claimService.createClaim(itemId, claim);
@@ -50,7 +50,7 @@ public class ClaimController {
         return ResponseEntity.notFound().build();
     }
 
-    // Update claim
+    
     @PutMapping("/updateClaim/{id}")
     public ResponseEntity<?> updateClaim(@PathVariable int id, @RequestBody ClaimEntity claimDetails) {
         ClaimEntity updatedClaim = claimService.updateClaim(id, claimDetails);
@@ -62,11 +62,12 @@ public class ClaimController {
 
     
     @DeleteMapping("/deleteClaim/{id}")
-    public ResponseEntity<?> deleteClaim(@PathVariable int id) {
-        boolean isDeleted = claimService.deleteClaim(id);
-        if (isDeleted) {
-            return ResponseEntity.ok().build();
+    public ResponseEntity<String> deleteClaim(@PathVariable int id) {
+        String result = claimService.deleteClaim(id);
+        if ("Succesfully deleted claim!".equals(result)) {
+            return ResponseEntity.ok(result); // Return success message
         }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.status(404).body(result); // Return failure message
     }
+
 }

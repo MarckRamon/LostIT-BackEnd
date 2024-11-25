@@ -36,6 +36,7 @@ public class AdminService {
             adminEntity.setFirstName(newAdminDetails.getFirstName());
             adminEntity.setLastName(newAdminDetails.getLastName());
             adminEntity.setPhoneNumber(newAdminDetails.getPhoneNumber());
+            adminEntity.setProfilePicture(newAdminDetails.getProfilePicture());
             adminEntity.setPassword(newAdminDetails.getPassword());
 
         } catch (NoSuchElementException ex) {

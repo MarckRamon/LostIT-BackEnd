@@ -20,26 +20,30 @@ public class ClaimService {
 	private ItemRepo itemRepo;
 	
 	public ClaimEntity createClaim(int itemId, ClaimEntity claim) {
-		Optional<ItemEntity> item = itemRepo.findById(itemId);
-		
-		if(item.isPresent()) {
-			ItemEntity foundItem = item.get();
-			
-			if(foundItem.getClaim() != null) {
-				return null;
-			}
-			
-			ClaimEntity savedClaim = claimRepo.save(claim);
-			
-			foundItem.setClaim(savedClaim);
-			foundItem.setStatus("Claimed");
-			itemRepo.save(foundItem);
-			
-			return savedClaim;
-		}
-		return null;
+	    Optional<ItemEntity> item = itemRepo.findById(itemId);
+
+	    if (item.isPresent()) {
+	        ItemEntity foundItem = item.get();
+
+	        if (foundItem.getClaim() != null) {
+	            return null;
+	        }
+
+	        if (claim.getStudEmail() == null || claim.getStudEmail().isEmpty()) {
+	            throw new IllegalArgumentException("Student email must not be null.");
+	        }
+
+	        ClaimEntity savedClaim = claimRepo.save(claim);
+
+	        foundItem.setClaim(savedClaim);
+	        foundItem.setStatus("Claimed");
+	        itemRepo.save(foundItem);
+
+	        return savedClaim;
+	    }
+	    return null;
 	}
-	
+
 	public List<ClaimEntity> getAllClaims() {
 	        return claimRepo.findAll();
 	}
@@ -53,7 +57,7 @@ public class ClaimService {
 		
 		if(claim.isPresent()) {
 			ClaimEntity existingClaim = claim.get();
-			existingClaim.setStudentEmail(claimDetails.getStudentEmail());
+			existingClaim.setStudEmail(claimDetails.getStudEmail());
 	        existingClaim.setFirstName(claimDetails.getFirstName());
 			existingClaim.setLastName(claimDetails.getLastName());
             existingClaim.setDateClaimed(claimDetails.getDateClaimed());
@@ -62,7 +66,7 @@ public class ClaimService {
 		return null;
 	}
 	
-	public boolean deleteClaim(int claimId) {
+	public String deleteClaim(int claimId) {
         Optional<ClaimEntity> claim = claimRepo.findById(claimId);
         
         if (claim.isPresent()) {
@@ -74,9 +78,9 @@ public class ClaimService {
                 itemRepo.save(item);
             }
             claimRepo.deleteById(claimId);
-            return true;
+            return "Succesfully deleted claim!";
         }
-        return false;
+        return "Failed to delete claim";
     }
 	
 	

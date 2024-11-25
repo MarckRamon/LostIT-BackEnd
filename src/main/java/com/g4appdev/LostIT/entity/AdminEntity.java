@@ -33,6 +33,14 @@ public class AdminEntity {
     
     @Column(name = "PhoneNumber", nullable = false)
     private String phoneNumber;
+    
+    
+    @Column(name = "ProfilePicture")
+    @Lob
+    private String profilePicture;
+    
+    
+    
  
    
    // @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
@@ -41,12 +49,14 @@ public class AdminEntity {
  
     public AdminEntity() {}
  
-    public AdminEntity(String email, String firstName, String lastName, String username, String password, String phoneNumber) {
+    public AdminEntity(String email, String firstName, String lastName, String username, String password, String phoneNumber, String profilePicture) {
         this.email = email;
         this.firstName = firstName;
-        this.lastName = lastName;       this.username = username;
+        this.lastName = lastName;      
+        this.username = username;
         this.password = password;
         this.phoneNumber = phoneNumber;
+        this.profilePicture = profilePicture;
     }
  
     public int getAdminId() {
@@ -98,6 +108,14 @@ public class AdminEntity {
 	}
 	public String getPassword() {
 		return password;
+	}
+
+	public String getProfilePicture() {
+		return profilePicture;
+	}
+
+	public void setProfilePicture(String profilePicture) {
+		this.profilePicture = profilePicture;
 	}
  
  
