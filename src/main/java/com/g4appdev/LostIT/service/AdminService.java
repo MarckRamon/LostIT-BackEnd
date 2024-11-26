@@ -65,7 +65,17 @@ public class AdminService {
 
         return adminRepo.save(adminEntity);
     }
-
+    
+    public AdminEntity removeProfilePicture(int id) {
+    	AdminEntity adminEntity = adminRepo.findById(id)
+    	        .orElseThrow(() -> new NoSuchElementException("Admin not found"));
+    	
+    	adminEntity.setProfilePicture(null);
+    	adminEntity.setProfilePictureType(null);
+    	
+    	return adminRepo.save(adminEntity);
+    }
+    
     public String deleteAdmin(int id) {
         if (adminRepo.existsById(id)) {
             adminRepo.deleteById(id);

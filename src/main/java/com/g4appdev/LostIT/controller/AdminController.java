@@ -11,6 +11,7 @@ import com.g4appdev.LostIT.service.AdminService;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Base64;
 
 @RestController
@@ -65,6 +66,16 @@ public class AdminController {
             return ResponseEntity.ok("data:" + imageType + ";base64," + base64Image);
         }
         return ResponseEntity.notFound().build();
+    }
+    
+    @DeleteMapping("/removeProfilePicture/{id}")
+    public ResponseEntity<String> removeProfilePicture(@PathVariable int id) {
+        try {
+            adminService.removeProfilePicture(id);
+            return ResponseEntity.ok("Profile picture removed successfully");
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @DeleteMapping("/deleteAdmin/{id}")
