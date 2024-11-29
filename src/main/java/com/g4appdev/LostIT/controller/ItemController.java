@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.g4appdev.LostIT.entity.ItemEntity;
+import com.g4appdev.LostIT.repository.ItemRepo;
 import com.g4appdev.LostIT.service.ItemService;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/items")
@@ -16,7 +18,7 @@ public class ItemController {
 
     @Autowired
     private ItemService itemService;
-
+    private ItemRepo itemrepo;
     
     @PostMapping("/addItem")
     public ItemEntity createItem(@RequestBody ItemEntity itemEntity) {
@@ -40,5 +42,7 @@ public class ItemController {
     public String deleteItem(@PathVariable int id) {
         return itemService.deleteItem(id);
     }
+    
+    
 }
 

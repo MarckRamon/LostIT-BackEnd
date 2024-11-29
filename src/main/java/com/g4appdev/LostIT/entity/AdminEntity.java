@@ -1,11 +1,6 @@
 package com.g4appdev.LostIT.entity;
 
-//import java.util.List;
-
-//import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.*;
-
 
 @Entity
 @Table(name = "admin")
@@ -33,20 +28,28 @@ public class AdminEntity {
     
     @Column(name = "PhoneNumber", nullable = false)
     private String phoneNumber;
- 
-   
-   // @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    //@JsonManagedReference // This ensures that items will be properly serialized when fetching the admin
-    //private List<ItemEntity> items;
- 
+    
+    @Lob
+    @Column(name = "ProfilePicture", columnDefinition = "LONGBLOB")
+    private byte[] profilePicture;
+    
+    @Column(name = "ProfilePictureType")
+    private String profilePictureType;
+
+    // Constructors, getters, and setters
     public AdminEntity() {}
- 
-    public AdminEntity(String email, String firstName, String lastName, String username, String password, String phoneNumber) {
+
+    public AdminEntity(String email, String firstName, String lastName, 
+                       String username, String password, String phoneNumber, 
+                       byte[] profilePicture, String profilePictureType) {
         this.email = email;
         this.firstName = firstName;
-        this.lastName = lastName;       this.username = username;
+        this.lastName = lastName;      
+        this.username = username;
         this.password = password;
         this.phoneNumber = phoneNumber;
+        this.profilePicture = profilePicture;
+        this.profilePictureType = profilePictureType;
     }
  
     public int getAdminId() {
@@ -99,6 +102,22 @@ public class AdminEntity {
 	public String getPassword() {
 		return password;
 	}
+
+	public byte[] getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(byte[] profilePicture) {
+        this.profilePicture = profilePicture;
+    }
+
+    public String getProfilePictureType() {
+        return profilePictureType;
+    }
+
+    public void setProfilePictureType(String profilePictureType) {
+        this.profilePictureType = profilePictureType;
+    }
  
  
     //public List<ItemEntity> getItems() {

@@ -1,6 +1,8 @@
 package com.g4appdev.LostIT.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 //import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -31,6 +33,13 @@ public class ItemEntity {
     private String date;
     
     
+    
+    
+    @OneToOne(optional=true)
+    @JoinColumn(name = "ClaimID")
+    @JsonBackReference
+    private ClaimEntity claim;
+   
     //@ManyToOne
     //@JoinColumn(name = "AdminID") 
     //@JsonBackReference
@@ -52,12 +61,13 @@ public class ItemEntity {
  
     public ItemEntity() {}
  
-    public ItemEntity(String itemName, String description, String status, String date, CategoryEntity category, LocationEntity location) {
+    public ItemEntity(String itemName, String description, String status, String date, ClaimEntity claim, CategoryEntity category, LocationEntity location) {
         this.itemName = itemName;
         this.description = description;
         this.status = status;
         this.date = date;
         //this.admin = admin;
+        this.claim = claim;
         this.category = category;
         this.location = location;
     }
@@ -105,6 +115,14 @@ public class ItemEntity {
 	//public void setAdmin(AdminEntity admin) {
 	//	this.admin = admin;
 	//}
+	
+	public ClaimEntity getClaim() {
+		return claim;
+	}
+
+	public void setClaim(ClaimEntity claim) {
+		this.claim = claim;
+	}
 
 	public CategoryEntity getCategory() {
 		return category;
@@ -122,7 +140,6 @@ public class ItemEntity {
 		this.location = location;
 	}
  
-   
- 
+	
     
 }
