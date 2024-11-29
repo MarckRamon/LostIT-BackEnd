@@ -32,6 +32,9 @@ public class ItemEntity {
     @Column(name = "Date")
     private String date;
     
+    @Column(name = "IsReported")
+    private boolean isReported;
+    
     
     @OneToOne(optional=true)
     @JoinColumn(name = "ClaimID")
@@ -138,7 +141,13 @@ public class ItemEntity {
 		this.location = location;
 	}
  
-   
+	public boolean isReported() {
+	    return isReported;
+	}
+
+	public void setReported(boolean reported) {
+	    isReported = reported;
+	}
  
     
 }
