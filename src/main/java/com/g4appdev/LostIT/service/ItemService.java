@@ -64,7 +64,6 @@ public class ItemService {
             //itemEntity.setAdmin(newItemDetails.getAdmin());
             itemEntity.setCategory(newItemDetails.getCategory());
             itemEntity.setLocation(newItemDetails.getLocation());
-
         } catch (NoSuchElementException ex) {
             throw new NoSuchElementException("Item with ID " + id + " not found!");
         }

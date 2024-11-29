@@ -43,21 +43,6 @@ public class ItemController {
         return itemService.deleteItem(id);
     }
     
-    @PostMapping("/addReportedItem")
-    public ItemEntity createReportedItem(@RequestBody ItemEntity itemEntity) {
-        itemEntity.setReported(true);
-        return itemService.createItem(itemEntity);
-    }
-
-    @PostMapping("/transferToInventory/{id}")
-    public ItemEntity transferToInventory(@PathVariable int id) {
-        ItemEntity item = itemrepo.findById(id)
-            .orElseThrow(() -> new NoSuchElementException("Item not found"));
-        
-        item.setReported(false);
-        item.setStatus("Turned In"); 
-        
-        return itemrepo.save(item);
-    }
+    
 }
 
