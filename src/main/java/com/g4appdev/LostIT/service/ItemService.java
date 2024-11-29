@@ -25,19 +25,25 @@ public class ItemService {
     @Autowired
     private LocationRepo locationRepo;
 
+    // New method to get item by ID
+    public ItemEntity getItemById(int id) {
+        return itemRepo.findById(id)
+            .orElseThrow(() -> new NoSuchElementException("Item not found with ID: " + id));
+    }
+
+    // Existing methods remain the same...
     public ItemEntity createItem(ItemEntity itemEntity) {
-        // Check if category needs to be created or already exists
+        // Existing implementation
         CategoryEntity category = itemEntity.getCategory();
         if (category != null && (category.getCategoryId() == 0 || !categoryRepo.existsById(category.getCategoryId()))) {
-            category = categoryRepo.save(category); // mo create new category if wala
+            category = categoryRepo.save(category);
         } else if (category != null) {
             category = categoryRepo.findById(category.getCategoryId()).orElseThrow(() -> new NoSuchElementException("Category not found"));
         }
 
-        // Check if location needs to be created or already exists
         LocationEntity location = itemEntity.getLocation();
         if (location != null && (location.getLocationId() == 0 || !locationRepo.existsById(location.getLocationId()))) {
-            location = locationRepo.save(location); // mo create new location if wala
+            location = locationRepo.save(location);
         } else if (location != null) {
             location = locationRepo.findById(location.getLocationId()).orElseThrow(() -> new NoSuchElementException("Location not found"));
         }
@@ -53,20 +59,16 @@ public class ItemService {
     }
 
     public ItemEntity updateItemDetails(int id, ItemEntity newItemDetails) {
-        ItemEntity itemEntity;
-        try {
-            itemEntity = itemRepo.findById(id).orElseThrow(() -> new NoSuchElementException("Item not found"));
+        ItemEntity itemEntity = getItemById(id);
 
-            itemEntity.setItemName(newItemDetails.getItemName());
-            itemEntity.setDescription(newItemDetails.getDescription());
-            itemEntity.setStatus(newItemDetails.getStatus());
-            itemEntity.setDate(newItemDetails.getDate());
-            //itemEntity.setAdmin(newItemDetails.getAdmin());
-            itemEntity.setCategory(newItemDetails.getCategory());
-            itemEntity.setLocation(newItemDetails.getLocation());
-        } catch (NoSuchElementException ex) {
-            throw new NoSuchElementException("Item with ID " + id + " not found!");
-        }
+        itemEntity.setItemName(newItemDetails.getItemName());
+        itemEntity.setDescription(newItemDetails.getDescription());
+        itemEntity.setStatus(newItemDetails.getStatus());
+        itemEntity.setDate(newItemDetails.getDate());
+        itemEntity.setCategory(newItemDetails.getCategory());
+        itemEntity.setLocation(newItemDetails.getLocation());
+        itemEntity.setReportStatus(newItemDetails.getReportStatus());
+
         return itemRepo.save(itemEntity);
     }
 

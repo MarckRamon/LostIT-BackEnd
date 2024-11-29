@@ -32,6 +32,9 @@ public class ItemEntity {
     @Column(name = "Date")
     private String date;
     
+    @Column(name = "ReportStatus")
+    private String reportStatus;
+    
     
     
     
@@ -61,7 +64,7 @@ public class ItemEntity {
  
     public ItemEntity() {}
  
-    public ItemEntity(String itemName, String description, String status, String date, ClaimEntity claim, CategoryEntity category, LocationEntity location) {
+    public ItemEntity(String itemName, String description, String status, String date, ClaimEntity claim, CategoryEntity category, LocationEntity location, String reportStatus) {
         this.itemName = itemName;
         this.description = description;
         this.status = status;
@@ -70,6 +73,7 @@ public class ItemEntity {
         this.claim = claim;
         this.category = category;
         this.location = location;
+        this.reportStatus = reportStatus;
     }
  
     public int getItemId() {
@@ -106,6 +110,14 @@ public class ItemEntity {
 
 	public void setDate(String date) {
 		this.date = date;
+	}
+	
+	public String getReportStatus() {
+		return status;
+	}
+
+	public void setReportStatus(String reportStatus) {
+		this.reportStatus = reportStatus;
 	}
 
 	//public AdminEntity getAdmin() {
